@@ -1,0 +1,252 @@
+/* ===== 基本 ===== */
+:root {
+    --font: Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --text: #000;
+    --muted: #5F5F5F;
+    --line: #C8C8C8;
+    --bg: #fff;
+    --accent: #FF5555;
+    --accent-weak: #FFE5E5;
+    --error: #e11d48;
+    --radius: 8px;
+    --w: 620px;
+    /* 中央カラムの幅（スクショ相当） */
+}
+
+.sell {
+    max-width: var(--w);
+    margin: 96px auto 64px;
+    padding: 0 16px;
+    color: var(--text);
+    font-family: var(--font);
+}
+
+.sell__title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1;
+    margin: 0 0 28px;
+}
+
+/* エラー */
+.sell__errors {
+    border: 1px solid #fecaca;
+    background: #fff1f2;
+    color: #991b1b;
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 16px;
+}
+
+.sell__errors ul {
+    margin: 0 0 0 18px;
+}
+
+/* フォーム全体 */
+.sell__form {
+    width: 100%;
+}
+
+/* ブロック見出し */
+.block {
+    margin-bottom: 28px;
+}
+
+.block__label {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.block__header {
+    font-weight: 700;
+    font-size: 18px;
+    margin: 24px 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #E5E7EB;
+}
+
+/* ドロップゾーン（スクショの大きい枠） */
+.dropzone {
+    border: 1.8px dashed #D9D9D9;
+    border-radius: 10px;
+    height: 140px;
+    display: grid;
+    place-items: center;
+}
+
+.dropzone__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    padding: 0 18px;
+    border: 2px solid var(--accent);
+    border-radius: 10px;
+    background: #fff;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.dropzone__button:hover {
+    background: var(--accent-weak);
+}
+
+/* ラベル＋入力 */
+.field {
+    margin: 18px 0;
+}
+
+.field__label {
+    font-weight: 700;
+    font-size: 14px;
+    margin: 0 0 6px;
+}
+
+/* 入力共通 */
+.input,
+.textarea,
+.select {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font: 400 14px/1.45 var(--font);
+    background: #fff;
+    outline: none;
+    transition: border-color .15s, box-shadow .15s;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(255, 85, 85, .25);
+}
+
+.textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+/* カテゴリ chips */
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 12px;
+}
+
+/* ボタン見た目（未選択） */
+.chip {
+    display: inline-flex;
+    align-items: center;
+    border: 1.6px solid var(--accent);
+    color: var(--accent);
+    border-radius: 999px;
+    padding: 6px 12px;
+    cursor: pointer;
+    user-select: none;
+    font-weight: 700;
+    font-size: 12px;
+    background: #fff;
+    transition: background-color .15s ease, color .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+
+/* 中に入れてる input は非表示 */
+.chip input {
+    display: none;
+}
+
+/* ホバー（未選択時） */
+.chip:hover {
+    background: var(--accent-weak);
+}
+
+/* キーボードフォーカスの見た目（アクセシビリティ対応） */
+.chip:focus-within {
+    box-shadow: 0 0 0 3px rgba(255, 85, 85, .25);
+}
+
+/* ✅ 選択時：ベタ塗り＋白文字＋枠も同色 */
+.chip:has(input:checked) {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+}
+
+/* 選択時ホバー：少しだけ明るく */
+.chip:has(input:checked):hover {
+    filter: brightness(1.03);
+}
+
+/* 価格（¥プレフィックス） */
+.price {
+    position: relative;
+}
+
+.price__prefix {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6B7280;
+    font-weight: 700;
+}
+
+.price__input {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 10px 12px 10px 28px;
+    /* ¥ぶん右にオフセット */
+    font: 400 14px/1 var(--font);
+}
+
+.price__input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(255, 85, 85, .25);
+}
+
+/* エラー行 */
+.form-error {
+    color: var(--error);
+    font-size: 12px;
+    margin-top: 6px;
+}
+
+/* 送信 */
+.actions {
+    margin-top: 28px;
+}
+
+.btn-primary {
+    width: 100%;
+    height: 48px;
+    border: none;
+    border-radius: 6px;
+    background: var(--accent);
+    color: #fff;
+    font: 700 16px/1 var(--font);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    opacity: .93;
+}
+
+/* レスポンシブ */
+@media (max-width: 560px) {
+    .sell {
+        margin-top: 72px;
+    }
+
+    .sell__title {
+        font-size: 24px;
+    }
+}

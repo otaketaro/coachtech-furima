@@ -1,0 +1,177 @@
+/* ===== Header (Figma: toppage-header) ===== */
+.site-header {
+    background: #000 !important;
+    height: 80px;
+}
+
+.site-header__inner {
+    max-width: 1512px;
+    height: 80px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: space-between;
+}
+
+/* すべてのヘッダー内リンクは白（ただし出品ボタン除外） */
+.site-header a:not(.site-header__nav-sell),
+.site-header a:not(.site-header__nav-sell):visited {
+    color: #fff !important;
+    text-decoration: none !important;
+}
+
+/* ===== Logo（画像対応版） ===== */
+.site-header__logo {
+    display: inline-block;
+    width: 370px;
+    /* Figma指定 */
+    height: 36px;
+    /* Figma指定 */
+    text-decoration: none;
+}
+
+.site-header__logo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+/* ===== Search ===== */
+.site-header__search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    max-width: 560px;
+    margin: 0 16px;
+}
+
+.site-header__search-input {
+    width: 500px;
+    height: 50px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 5px;
+    padding: 0 12px;
+    padding-left: 40px;
+    font-size: 18px;
+    color: #111;
+}
+
+.site-header__search-input::placeholder {
+    color: #111;
+    /* ← 濃いグレーに */
+    font-weight: 500;
+    /* ← 少し太字 */
+}
+
+
+/* ===== Nav ===== */
+.site-header__nav {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    /* 折り返し防止 */
+}
+
+/* 通常リンク */
+.site-header__nav-link {
+    font-family: Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: #fff !important;
+    white-space: nowrap;
+    /* 折り返し防止 */
+}
+
+/* 出品ボタン */
+.site-header a.site-header__nav-sell,
+.site-header a.site-header__nav-sell:visited {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 50px;
+    background: #ffffff;
+    color: #000000 !important;
+    border-radius: 4px;
+    text-decoration: none !important;
+    font-family: Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1;
+    white-space: nowrap;
+    /* 折り返し防止 */
+}
+
+/* ===== Logout button ===== */
+.site-header__logout {
+    background: #000;
+    /* 黒背景 */
+    color: #fff !important;
+    /* 白文字 */
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+
+    /* マイページと同じ見た目に合わせる */
+    font-family: Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+/* ===== flash message ===== */
+.flash-status {
+    color: green;
+    text-align: center;
+    margin: 12px 0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1200px) {
+    .site-header__logo {
+        width: auto;
+        padding-right: 8px;
+    }
+
+    .site-header__search {
+        max-width: 420px;
+        min-width: 0;
+        /* Flex収縮を許可 */
+        flex: 1 1 auto;
+    }
+
+    .site-header__search-input {
+        width: 360px;
+    }
+
+    .site-header__nav {
+        gap: 16px;
+    }
+
+    .site-header__nav-link,
+    .site-header__nav-sell {
+        font-size: 20px;
+        /* 24px → 20px */
+    }
+
+    .site-header__logout {
+        font-size: 14px;
+        /* ボタン文言縮小 */
+        padding: 6px 10px;
+        /* ボタンの横幅節約 */
+    }
+}
+
+@media (max-width: 900px) {
+    .site-header__search {
+        display: none;
+    }
+}

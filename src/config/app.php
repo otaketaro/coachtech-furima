@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'ja',
+    'locale' => env('APP_LOCALE', 'ja'),
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
 
     /*
     |--------------------------------------------------------------------------
@@ -106,7 +106,7 @@ return [
     |
     */
 
-    'faker_locale' => 'ja_JP',
+    'faker_locale' => env('FAKER_LOCALE', 'ja_JP'),
 
     /*
     |--------------------------------------------------------------------------
@@ -134,11 +134,12 @@ return [
     |
     */
 
+    // src/config/app.php の 'providers' セクションだけ貼り替え
     'providers' => [
 
         /*
-         * Laravel Framework Service Providers...
-         */
+     * Laravel Framework Service Providers...
+     */
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -163,18 +164,20 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
-         * Package Service Providers...
-         */
+     * Package Service Providers...
+     */
 
         /*
-         * Application Service Providers...
-         */
+     * Application Service Providers...
+     */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // ← ここに Fortify を足す（この配列の”中”なら位置はどこでもOK）
+        App\Providers\FortifyServiceProvider::class,
     ],
 
     /*

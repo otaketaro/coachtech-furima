@@ -54,8 +54,8 @@ php artisan db:seed
 
 
 ## 管理者ログイン情報
-- メールアドレス: 
-- パスワード: 
+- メールアドレス: admin@example.com
+- パスワード: password123
 
 
 ## URL

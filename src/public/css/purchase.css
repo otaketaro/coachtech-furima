@@ -1,0 +1,312 @@
+/* ===== レイアウト全体 ===== */
+.pg-purchase {
+    max-width: 1368px;
+    /* ← 1512から縮めて左右に余白を確保 */
+    padding: 0 72px;
+    /* ← 左右に約2cmの余白 */
+}
+
+.purchase-grid {
+    display: grid;
+    grid-template-columns: 1fr 440px;
+    /* 左可変 / 右はFigmaの440固定 */
+    gap: 24px;
+    align-items: start;
+}
+
+/* ===== 区切り線（FigmaのLine） ===== */
+.rule {
+    border-bottom: 1px solid #000;
+    margin: 16px 0 8px;
+    /* 上16px / 左右0 / 下8px */
+}
+
+/* ===== 左カラム ===== */
+.block {}
+
+.product-row {
+    display: grid;
+    grid-template-columns: 177.5px auto;
+    /* 左：画像、右：テキスト */
+    gap: 24px;
+    align-items: center;
+}
+
+.product-thumb {
+    width: 177.5px;
+    height: 177.5px;
+    background: #d9d9d9;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.product-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.product-thumb__ph {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    color: #000;
+    font: 400 18px/1 Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+.product-meta {
+    display: grid;
+    gap: 12px;
+}
+
+.product-title {
+    font: 700 30px/1 Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: #000;
+}
+
+.product-price {
+    font: 400 27px/1 Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: #000;
+}
+
+/* 見出し（支払い方法／配送先） */
+.block-title {
+    margin: 0 0 8px;
+    font: 700 20px/1 Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: #000;
+}
+
+/* ===== 支払い方法プルダウン（Figmaの雰囲気合わせ＋▼表示） ===== */
+.pay-select-wrap {
+    position: relative;
+    /* ▼の基準 */
+    display: inline-block;
+    /* select の幅に合わせる */
+}
+
+.pay-select {
+    width: 265px;
+    /* Figmaの幅 */
+    height: 31px;
+    /* Figmaの高さ */
+    border: 1px solid #5F5F5F;
+    border-radius: 4px;
+    padding: 0 32px 0 10px;
+    /* 右に▼ぶんの余白を追加（32） */
+    color: #111;
+    background: #fff;
+    font: 400 16px/1 Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+
+    /* 既定の矢印を消す（各ブラウザ） */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: none;
+
+    box-shadow: none;
+    outline: none;
+}
+
+.pay-select:focus {
+    border: 1px solid #5F5F5F;
+    box-shadow: none;
+    outline: none;
+}
+
+.pay-select option {
+    font-weight: 400;
+    color: #111;
+}
+
+/* 右端の下向き黒三角（▼） */
+.pay-select-wrap::after {
+    content: "";
+    position: absolute;
+    right: 10px;
+    /* ▼の右余白 */
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+
+    /* 三角形をボーダーで作る（下向き） */
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #000;
+    /* ▼の色 */
+}
+
+/* 配送先 */
+.address-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.address-link {
+    color: #0073CC;
+    text-decoration: none;
+    font: 400 20px/1 Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+.address-line {
+    margin: 8px 0 0;
+    font: 600 20px/1 Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: #000;
+}
+
+/* ===== 右カラム（確認カード 440幅） ===== */
+.purchase-aside {
+    position: sticky;
+    top: 24px;
+    align-self: start;
+}
+
+.summary-card {
+    width: 440px;
+    border: 1px solid #000;
+    /* Figmaは黒の枠 */
+    border-radius: 0;
+    /* 角丸なし */
+    background: #fff;
+}
+
+.summary-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* 左ラベル / 右値（中央寄せ風に見せる） */
+    align-items: center;
+    min-height: 115px;
+    /* Figmaの行高 */
+    border-bottom: 1px solid #000;
+    /* 上段の下線、下段は後で消す */
+    text-align: center;
+}
+
+.summary-row:last-child {
+    border-bottom: none;
+}
+
+.summary-label {
+    font: 400 20px/1 Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: #000;
+}
+
+.summary-value {
+    font: 400 24px/1 Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: #000;
+}
+
+/* 購入ボタン（カード幅と同じ） */
+.btn-purchase {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 440px;
+    /* カードと同じ幅 */
+    height: 60px;
+    /* Figmaのaction-bar高さ */
+    margin-top: 24px;
+    border: none;
+    border-radius: 5px;
+    background: #FF5555;
+    color: #fff;
+    font: 700 26px/1 Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    cursor: pointer;
+}
+
+/* ステータスメッセージ */
+.flash-error {
+    color: #b91c1c;
+    margin-bottom: 8px;
+}
+
+.flash-status {
+    color: #059669;
+    margin-bottom: 8px;
+}
+
+/* ===== 左カラムの上下余白を見本寄せで微調整（常時適用） ===== */
+
+/* 画面全体の上部余白を少し増やす（上に寄る感じを解消） */
+.pg-purchase {
+    margin: 96px auto 80px !important;
+    /* もともと 64px を上書き */
+}
+
+/* 「商品画像＋タイトル/価格」ブロックの上下に余白 */
+.product-row {
+    margin: 24px 0 28px !important;
+    /* 上下に少し広めのスペース */
+}
+
+/* 区切り線（Line）の上下余白を拡大 */
+.rule {
+    margin: 38px 0 !important;
+    /* 16px → 24px に */
+}
+
+/* 見出しと中身の間隔を広げる（支払い方法／配送先） */
+.block-title {
+    margin: 24px 0 12px !important;
+    /* タイトル上にゆとり */
+}
+
+/* 支払い方法のセレクトの下に空きを作る */
+.pay-select-wrap,
+.form-row {
+    margin-bottom: 38px !important;
+}
+
+/* 配送先ヘッダ（左「配送先」＋右「変更する」）直下の住所との間隔 */
+.address-head {
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+}
+
+/* 住所の1行を少し下げる */
+.address-line {
+    margin-top: 5px !important;
+}
+
+/* セクション間（例：支払い方法 → 配送先）の間隔を統一して確保 */
+.block+.block {
+    margin-top: 28px !important;
+}
+
+
+/* ===== レスポンシブ（簡易） ===== */
+@media (max-width: 1024px) {
+    .purchase-grid {
+        grid-template-columns: 1fr;
+        /* 1カラム */
+    }
+
+    .summary-card,
+    .btn-purchase {
+        width: 100%;
+    }
+
+    .product-row {
+        grid-template-columns: 160px auto;
+    }
+
+    /* ===== 配送先の“上”の余白を詰める（支払い方法ブロックとの間隔） ===== */
+    .form-row {
+        margin-bottom: 8px !important;
+        /* 例: 8px に圧縮 */
+    }
+
+    .form-row+.fieldset {
+        margin-top: 8px !important;
+        /* 例: 8px に圧縮 */
+    }
+
+    /* ===== ページ全体の左右余白を広げる（2cm相当 ≒ 72px） ===== */
+    .pg-purchase {
+        padding-left: 72px !important;
+        padding-right: 72px !important;
+    }
+}

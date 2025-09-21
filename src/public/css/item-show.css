@@ -1,0 +1,646 @@
+/* =========================
+   商品詳細（Figma 準拠）
+   page width 1512 / content 1380 / col 690+690
+========================= */
+
+.pg-item-show {
+    background: #fff;
+}
+
+/* ヘッダー下の余白（80 → 175 = 95px） */
+.pg-item-show__underline {
+    height: 95px;
+}
+
+/* 1380pxセンター。左右 66px の余白イメージ */
+.pg-item-show__grid {
+    max-width: 1380px;
+    margin: 0 auto 80px;
+    display: grid;
+    grid-template-columns: 690px 690px;
+    gap: 0;
+}
+
+/* ========== 左カラム：画像エリア ========== */
+.item-visual {}
+
+.item-visual__box {
+    position: relative;
+    width: 690px;
+    min-height: 672px;
+    padding: 36px 0 0 45px;
+}
+
+.item-visual__img,
+.item-visual__placeholder {
+    width: 600px;
+    height: 600px;
+    border-radius: 4px;
+    display: block;
+    object-fit: contain;
+    /* ← 全体を収める */
+    object-position: center;
+    /* ← 中央に配置 */
+    background: #fff;
+    /* ← 余白は白（好みで #D9D9D9 でもOK） */
+}
+
+.item-visual__placeholder {
+    display: grid;
+    place-items: center;
+    font: 400 40px/1 Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: #000;
+}
+
+.badge-sold {
+    position: absolute;
+    top: 12px;
+    left: 57px;
+    background: #111827;
+    color: #fff;
+    font: 700 12px/1 Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    padding: 6px 8px;
+    border-radius: 6px;
+}
+
+/* ========== 右カラム：情報エリア（内側 570px） ========== */
+.item-info {
+    width: 690px;
+}
+
+.item-info__title {
+    margin: 36px 0 8px 65px;
+    font: 700 45px/1 Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: #000;
+}
+
+.item-spec {
+    margin: 0 0 8px 65px;
+    width: 570px;
+}
+
+.item-spec__row {
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+    margin: 0 0 8px;
+}
+
+.item-spec__row dt {
+    min-width: 110px;
+    font: 400 20px/1 Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: #000;
+}
+
+.item-spec__row dd {
+    margin: 0;
+    font: 400 20px/1 Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: #000;
+}
+
+.item-info__price {
+    margin: 12px 0 12px 65px;
+    width: 570px;
+    font: 400 30px/1 Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: #000;
+}
+
+.item-info__price span {
+    font-size: 18px;
+}
+
+/* いいね / コメント */
+.item-metrics {
+    margin: 12px 0 0 65px;
+    width: 570px;
+    display: flex;
+    gap: 64px;
+    align-items: flex-start;
+}
+
+.metric {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.metric__img {
+    width: 40px;
+    height: 40px;
+    display: block;
+    object-fit: contain;
+}
+
+.metric__num {
+    font: 700 18px/1 Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: #000;
+}
+
+/* 購入ボタン（570×56 #FF5555） */
+.item-actions {
+    margin: 16px 0 0 65px;
+    width: 570px;
+}
+
+.btn-buy {
+    width: 570px;
+    height: 56px;
+    border: none;
+    border-radius: 4px;
+    background: #FF5555;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font: 700 30px/1 Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-buy[disabled] {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+.hint {
+    margin: 8px 0 0 65px;
+    color: #6b7280;
+    font: 400 14px/1.4 system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ========== セクション：商品説明 / 商品の情報 ========== */
+.sec-title {
+    margin: 36px 0 16px 65px;
+    width: 570px;
+    font: 700 36px/1 Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: #000;
+}
+
+.item-desc__text {
+    margin: 0 0 0 65px;
+    width: 570px;
+    font: 400 24px/1.6 Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: #000;
+}
+
+/* カテゴリのチップ */
+.chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    padding: 0 12px;
+    margin: 0 8px 8px 0;
+    background: #E5E5E5;
+    border-radius: 15px;
+    font: 400 20px/1 Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: #000;
+}
+
+/* ========== コメント一覧 ========== */
+.item-comments {}
+
+.comment-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.comment {
+    margin: 0 0 24px 65px;
+    width: 570px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.comment__avatar img,
+.avatar--placeholder {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: #D9D9D9;
+    display: grid;
+    place-items: center;
+    font: 400 24px/1 Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: #000;
+}
+
+.comment__body {
+    flex: 1;
+}
+
+.comment__meta {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.comment__user {
+    font: 700 30px/1 Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: #000;
+}
+
+.comment__time {
+    font: 400 14px/1.2 Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: #6b7280;
+}
+
+.comment__content {
+    margin-top: 12px;
+    padding: 20px 15px;
+    background: #E5E5E5;
+    border-radius: 5px;
+    font: 300 20px/1 Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: #000;
+}
+
+/* ========== コメント投稿 ========== */
+.item-comment-form {
+    margin-top: 8px;
+}
+
+.item-comment-form .sec-title {
+    margin-top: 24px;
+}
+
+.form textarea {
+    width: 570px;
+    height: 294px;
+    margin: 0 0 12px 65px;
+    padding: 12px;
+    border: 1px solid #C8C8C8;
+    border-radius: 4px;
+    font: 400 16px/1.4 system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    resize: vertical;
+}
+
+.form-error {
+    margin: 0 0 8px 65px;
+    color: #e11d48;
+    font: 400 14px/1.2 system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* 共通ボタン（送信・ログイン誘導・購入手続きと同サイズ/同色） */
+.btn-primary {
+    width: 570px;
+    height: 56px;
+    margin: 0 0 0 65px;
+    border: none;
+    border-radius: 4px;
+    background: #FF5555;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font: 700 25px/1 Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    cursor: pointer;
+}
+
+a.btn-primary,
+a.btn-primary:visited {
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    opacity: .9;
+}
+
+.btn-primary:disabled,
+.btn-primary[aria-disabled="true"] {
+    opacity: .5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.form--guest textarea {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+.form--guest .btn-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 小さめ幅（軽調整） */
+@media (max-width:1200px) {
+    .pg-item-show__grid {
+        padding: 0 16px;
+    }
+}
+
+/* ============= Like / Comment metric buttons（画像で切替） ============= */
+.metric-like-form {
+    display: inline;
+}
+
+.metric-btn {
+    background: transparent;
+    border: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.metric-btn:hover {
+    opacity: .9;
+}
+
+.metric-btn.is-active {
+    opacity: 1;
+}
+
+/* =========================
+   Responsive: PC (1400–1540px)
+========================= */
+@media (min-width:1400px) and (max-width:1540px) {
+    .pg-item-show__grid {
+        margin-bottom: 64px;
+    }
+
+    .item-info__title {
+        margin-left: 60px;
+    }
+
+    .item-spec,
+    .item-info__price,
+    .item-metrics,
+    .item-actions,
+    .sec-title,
+    .item-desc__text,
+    .comment,
+    .form textarea,
+    .form-error,
+    .btn-primary {
+        margin-left: 60px;
+    }
+}
+
+/* =========================
+   Responsive: Tablet (768–850px)
+   1カラム化＋中央寄せ
+========================= */
+@media (min-width:768px) and (max-width:850px) {
+
+    .item-visual__img,
+    .item-visual__placeholder {
+        width: min(100%, 600px);
+        height: auto;
+        aspect-ratio: 1/1;
+        object-fit: contain;
+        /* ← 追加 */
+        object-position: center;
+        /* ← 追加 */
+        background: #fff;
+        /* ← 余白の色を統一（任意） */
+    }
+}
+
+    .item-visual {
+        display: flex;
+        justify-content: center;
+    }
+
+    .item-visual__box {
+        width: 100%;
+        padding: 24px 0 0;
+    }
+
+    .item-visual__img,
+    .item-visual__placeholder {
+        width: min(100%, 600px);
+        height: auto;
+        aspect-ratio: 1/1;
+    }
+
+    .badge-sold {
+        top: 8px;
+        left: 16px;
+    }
+
+    .item-info {
+        width: 100%;
+    }
+
+    .item-info__title {
+        width: min(100%, 570px);
+        margin: 24px auto 8px;
+        font-size: 36px;
+    }
+
+    .item-spec,
+    .item-info__price,
+    .item-metrics,
+    .item-actions,
+    .sec-title,
+    .item-desc__text,
+    .comment,
+    .form textarea,
+    .form-error,
+    .btn-primary {
+        width: min(100%, 570px);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .item-spec__row dt,
+    .item-spec__row dd {
+        font-size: 18px;
+    }
+
+    .item-info__price {
+        font-size: 26px;
+    }
+
+    .sec-title {
+        font-size: 28px;
+        margin-top: 28px;
+    }
+
+    .item-desc__text {
+        font-size: 20px;
+    }
+
+    .item-metrics {
+        gap: 40px;
+    }
+
+    .btn-buy,
+    .btn-primary {
+        width: 100%;
+    }
+
+    .comment__user {
+        font-size: 24px;
+    }
+
+    .comment__content {
+        font-size: 18px;
+    }
+
+    .form textarea {
+        width: 100%;
+    }
+}
+
+/* =========================
+   Figma名クラスの別名対応（優先度UP版）
+   HTMLに product-detail / product-image-area / product-description-area を付与済み
+========================= */
+
+/* コンテナ（product-detail）＝ pg-item-show__grid と同じ指定 */
+.pg-item-show .product-detail {
+    max-width: 1380px;
+    margin: 0 auto 80px;
+    display: grid;
+    grid-template-columns: 690px 690px;
+    gap: 0;
+}
+
+/* ===== Tablet ～850px：1カラム化＆中央寄せ ===== */
+@media (max-width: 850px) {
+    .pg-item-show .product-detail {
+        grid-template-columns: 1fr !important;
+        /* グリッド確実に上書き */
+        gap: 24px;
+        padding: 0 24px;
+        max-width: 850px;
+    }
+
+    /* 左（画像） */
+    .pg-item-show .product-image-area {
+        display: flex;
+        justify-content: center;
+    }
+
+    .pg-item-show .product-image-area .item-visual__box {
+        width: 100%;
+        padding: 24px 0 0;
+    }
+
+    .pg-item-show .product-image-area .item-visual__img,
+    .pg-item-show .product-image-area .item-visual__placeholder {
+        width: min(100%, 600px) !important;
+        height: auto !important;
+        aspect-ratio: 1 / 1;
+    }
+
+    .pg-item-show .badge-sold {
+        top: 8px;
+        left: 16px;
+    }
+
+    /* 右（情報） */
+    .pg-item-show .product-description-area {
+        width: 100%;
+    }
+
+    .pg-item-show .product-description-area .item-info__title {
+        width: min(100%, 570px);
+        margin: 24px auto 8px;
+        font-size: 36px;
+    }
+
+    .pg-item-show .product-description-area .item-spec,
+    .pg-item-show .product-description-area .item-info__price,
+    .pg-item-show .product-description-area .item-metrics,
+    .pg-item-show .product-description-area .item-actions,
+    .pg-item-show .product-description-area .sec-title,
+    .pg-item-show .product-description-area .item-desc__text,
+    .pg-item-show .product-description-area .comment,
+    .pg-item-show .product-description-area .form textarea,
+    .pg-item-show .product-description-area .form-error,
+    .pg-item-show .product-description-area .btn-primary {
+        width: min(100%, 570px);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* 文字サイズの微調整（タブレット） */
+    .pg-item-show .product-description-area .item-spec__row dt,
+    .pg-item-show .product-description-area .item-spec__row dd {
+        font-size: 18px;
+    }
+
+    .pg-item-show .product-description-area .item-info__price {
+        font-size: 26px;
+    }
+
+    .pg-item-show .product-description-area .sec-title {
+        font-size: 28px;
+        margin-top: 28px;
+    }
+
+    .pg-item-show .product-description-area .item-desc__text {
+        font-size: 20px;
+    }
+
+    .pg-item-show .product-description-area .item-metrics {
+        gap: 40px;
+    }
+
+    .pg-item-show .product-description-area .btn-buy,
+    .pg-item-show .product-description-area .btn-primary {
+        width: 100%;
+    }
+
+    .pg-item-show .product-description-area .comment__user {
+        font-size: 24px;
+    }
+
+    .pg-item-show .product-description-area .comment__content {
+        font-size: 18px;
+    }
+
+    .pg-item-show .product-description-area .form textarea {
+        width: 100%;
+    }
+}
+
+/* ===== PC 1400–1540px：軽い詰め ===== */
+@media (min-width: 1400px) and (max-width: 1540px) {
+    .pg-item-show .product-detail {
+        margin-bottom: 64px;
+    }
+
+    .pg-item-show .product-description-area .item-info__title {
+        margin-left: 60px;
+    }
+
+    .pg-item-show .product-description-area .item-spec,
+    .pg-item-show .product-description-area .item-info__price,
+    .pg-item-show .product-description-area .item-metrics,
+    .pg-item-show .product-description-area .item-actions,
+    .pg-item-show .product-description-area .sec-title,
+    .pg-item-show .product-description-area .item-desc__text,
+    .pg-item-show .product-description-area .comment,
+    .pg-item-show .product-description-area .form textarea,
+    .pg-item-show .product-description-area .form-error,
+    .pg-item-show .product-description-area .btn-primary {
+        margin-left: 60px;
+    }
+}
+
+/* いいね時の星をオレンジにする（画像はそのまま） */
+.metric-btn.is-active .metric__img {
+    filter: invert(56%) sepia(92%) saturate(1186%) hue-rotate(1deg) brightness(101%) contrast(103%);
+}
+
+/* 任意：ホバーで少し明るく */
+.metric-btn.is-active:hover .metric__img {
+    filter: invert(56%) sepia(92%) saturate(1400%) hue-rotate(1deg) brightness(108%) contrast(103%);
+}
+
+.item-spec__row dt {
+    font-weight: 600;
+    color: #000;
+}

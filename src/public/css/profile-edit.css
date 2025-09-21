@@ -1,0 +1,154 @@
+/* ====== TOKENS (Figma仕様) ====== */
+:root {
+    --pfx-maxw: 680px;
+    /* 入力フォーム幅 */
+    --pfx-gap: 16px;
+
+    --pfx-text: #000000;
+    /* テキストは黒 */
+    --pfx-border: #5F5F5F;
+    /* 入力ボーダー */
+    --pfx-bg: #FFFFFF;
+    --pfx-primary: #FF5555;
+    /* 赤ボタン */
+    --pfx-primary-hover: #ff4444;
+
+    --pfx-title-fz: 36px;
+    /* 見出し */
+    --pfx-label: 16px;
+    /* ラベルの想定サイズ */
+    --pfx-input-fz: 16px;
+
+    --pfx-avatar: 150px;
+    /* アバター直径 */
+    --pfx-btn-h: 49px;
+    /* 画像選択ボタン高さ */
+    --pfx-action-h: 60px;
+    /* 更新ボタン高さ */
+}
+
+/* ====== ページ骨格 ====== */
+.pfx {
+    max-width: var(--pfx-maxw);
+    margin: 40px auto;
+    color: var(--pfx-text);
+}
+
+.pfx__title {
+    text-align: center;
+    /* ← 中央寄せ */
+    font-size: var(--pfx-title-fz);
+    font-weight: 700;
+    margin-bottom: 40px;
+    font-family: Inter, sans-serif;
+}
+
+/* ====== フォームカード ====== */
+.pfx__form {
+    background: var(--pfx-bg);
+    /* border: 1px solid var(--pfx-border); */
+    border-radius: 4px;
+    padding: 32px;
+}
+
+/* ====== アバター行 ====== */
+.pfx__avatarRow {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.pfx__avatarImg,
+.pfx__avatarPh {
+    width: var(--pfx-avatar);
+    height: var(--pfx-avatar);
+    border-radius: 999px;
+    background: #D9D9D9;
+    object-fit: cover;
+    border: 1px solid var(--pfx-border);
+}
+
+.pfx__avatarPh {
+    background: #D9D9D9;
+}
+
+.pfx__file {
+    display: none;
+}
+
+.pfx__btnGhost {
+    display: inline-block;
+    width: 179px;
+    height: var(--pfx-btn-h);
+    background: var(--pfx-primary);
+    border: 2px solid var(--pfx-primary);
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: Inter, sans-serif;
+    color: #fff;
+    text-align: center;
+    line-height: var(--pfx-btn-h);
+    cursor: pointer;
+    transition: background-color .15s ease;
+}
+
+.pfx__btnGhost:hover {
+    background: var(--pfx-primary-hover);
+}
+
+/* ====== 入力欄 ====== */
+.pfx__group {
+    margin-bottom: 24px;
+}
+
+.pfx__label {
+    display: block;
+    font-size: var(--pfx-label);
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.pfx__input {
+    width: 100%;
+    height: 48px;
+    /* ← 縦を短く */
+    border: 1px solid var(--pfx-border);
+    border-radius: 4px;
+    padding: 0 12px;
+    /* 上下は自動で中央寄せ */
+    font-size: var(--pfx-input-fz);
+    font-family: Inter, sans-serif;
+    color: var(--pfx-text);
+}
+
+.pfx__error {
+    color: red;
+    font-size: 14px;
+    margin-top: 6px;
+}
+
+/* ====== アクションバー（更新ボタン） ====== */
+.pfx__actions {
+    margin-top: 40px;
+}
+
+.pfx__btnPrimary {
+    width: 100%;
+    height: var(--pfx-action-h);
+    background: var(--pfx-primary);
+    color: #fff;
+    font-weight: 700;
+    font-size: 26px;
+    font-family: Inter, sans-serif;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color .15s ease;
+}
+
+.pfx__btnPrimary:hover {
+    background: var(--pfx-primary-hover);
+}

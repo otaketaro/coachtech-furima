@@ -1,0 +1,221 @@
+/* ===== ページ全体 ===== */
+.pg-mypage {
+    max-width: 1512px;
+    /* Figma: width 1512 */
+    margin: 0 auto;
+    padding: 0 16px 48px;
+    background: #fff;
+    color: #000;
+    font-family: Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ===== ユーザー情報（Figma: user-info） ===== */
+.user-info {
+    padding-top: 24px;
+}
+
+.user-info-inner {
+    display: grid;
+    grid-template-columns: 150px 1fr 450px;
+    /* avatar 150 / meta / actions */
+    gap: 24px;
+    align-items: center;
+    min-height: 150px;
+    /* Figma: height 150 */
+
+    padding-left: 240px;
+    /* ← これを追加して、ヘッダーと揃える */
+}
+
+.user-avatar {
+    width: 150px;
+    /* Figma: 150 x 150 */
+    height: 150px;
+    border-radius: 50%;
+    background: #D9D9D9;
+}
+
+.user-meta {
+    min-width: 0;
+}
+
+.user-name {
+    font-weight: 700;
+    /* Bold */
+    font-size: 36px;
+    /* Figma: 36 */
+    line-height: 1;
+    color: #000;
+}
+
+/* プロフィールを編集（Figma: Group 8, 赤角丸ボタン） */
+.user-actions {
+    display: flex;
+    align-items: center;
+}
+
+.btn-edit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 59px;
+    /* Figma: 59 */
+    padding: 0 24px;
+    border-radius: 10px;
+    /* Figma: r=10 */
+    border: 2px solid #FF5555;
+    /* 赤いアウトライン */
+    background: #FFFFFF;
+    /* 白背景 */
+    color: #FF5555;
+    /* 赤文字 */
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.btn-edit:hover {
+    background: #FFE5E5;
+    /* 任意：ホバー時に薄赤 */
+}
+
+/* ===== タブ（Figma: toppage-list） ===== */
+.mypage-tabs {
+    display: flex;
+    gap: 32px;
+    margin-top: 12px;
+    margin-left: 100px;
+}
+
+.tab-link {
+    position: relative;
+    padding: 12px 0;
+    text-decoration: none;
+    color: #5F5F5F;
+    /* 非アクティブ: グレー */
+    font-weight: 700;
+    font-size: 24px;
+    /* Figma: 24 */
+}
+
+.tab-link.is-active {
+    color: #FF5555;
+    /* アクティブ: 赤 */
+}
+
+.tabs-divider {
+    border-bottom: 2px solid #5F5F5F;
+    /* Figma: Line 2, 2px */
+    margin-top: 4px;
+}
+
+/* ===== 商品グリッド（Figma: product-sample-data, products-row） ===== */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    /* 5列 */
+    gap: 24px;
+    padding: 24px 0 0;
+}
+
+.product-card {
+    display: grid;
+    gap: 8px;
+}
+
+.product-thumb {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    /* 正方形 */
+    background: #D9D9D9;
+    border-radius: 6px;
+    display: grid;
+    place-items: center;
+}
+
+.product-thumb-ph {
+    color: #000;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.product-title {
+    font-size: 14px;
+    color: #000;
+}
+
+/* ===== レスポンシブ（簡易） ===== */
+@media (max-width: 1200px) {
+    .products-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .user-info-inner {
+        grid-template-columns: 100px 1fr;
+        row-gap: 12px;
+    }
+
+    .user-actions {
+        grid-column: 1 / -1;
+    }
+
+    .user-avatar {
+        width: 100px;
+        height: 100px;
+    }
+
+    .user-name {
+        font-size: 24px;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ===== 商品画像の調整 ===== */
+.product-thumb__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 枠いっぱいに収めてトリミング */
+    border-radius: 6px;
+    /* 枠と同じ角丸 */
+    display: block;
+}
+
+/* === MyPage 専用: 画像上に Sold バッジ === */
+.pg-mypage .item-card__image-wrap {
+    position: relative;
+    /* 絶対配置の基準 */
+}
+
+.pg-mypage .item-card__sold {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: #000;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1;
+    padding: 4px 8px;
+    border-radius: 4px;
+    z-index: 1;
+}
+
+/* 念のため（items.css で同等指定があっても衝突しません） */
+.pg-mypage .item-card__image {
+    display: block;
+    width: 290px;
+    height: 290px;
+    object-fit: cover;
+}

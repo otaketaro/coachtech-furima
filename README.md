@@ -1,11 +1,9 @@
-# laravel-docker-template
-
-coachtech-furima
+# coachtech-furima
 フリマアプリ
 
 ## 環境構築
 **Dockerビルド**
-1. `git clone https://github.com/otaketaro/coachtech-furima.git`
+1. `git clone https://github.com/otaketaro/coachtech-furima`
 2. Docker Desktop を起動
 3. `docker-compose up -d --build`
 
@@ -64,7 +62,7 @@ php artisan db:seed
 
 ## URL
 - 開発環境：http://localhost
-- phpMyAdmin:：http://localhost:8080
+- phpMyAdmin：http://localhost:8080
 
 ## 補足
 商品詳細ページのエラーメッセージの指定がなかったため、「リスト内の項目を選択してください」というエラーメッセージが出るようにしてあります。

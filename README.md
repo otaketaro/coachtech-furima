@@ -57,7 +57,14 @@ php artisan db:seed
 - メールアドレス: admin@example.com
 - パスワード: password123
 
+## 一般ユーザーログイン情報
+- メールアドレス: buyer1@example.com
+- パスワード: password123
+
 
 ## URL
 - 開発環境：http://localhost
 - phpMyAdmin:：http://localhost:8080
+
+## 補足
+商品詳細ページのエラーメッセージの指定がなかったため、「リスト内の項目を選択してください」というエラーメッセージが出るようにしてあります。

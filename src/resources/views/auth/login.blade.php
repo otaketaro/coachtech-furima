@@ -16,14 +16,20 @@
 
             <div class="form-group">
                 <label class="label" for="email">メールアドレス</label>
-                <input id="email" class="input" name="email" type="text" value="{{ old('email') }}" maxlength="255" autocomplete="email">
-                @error('email') <div class="error">{{ $message }}</div> @enderror
+                <input id="email" class="input" name="email" type="text"
+                    value="{{ old('email') }}" maxlength="255" autocomplete="email">
+                @error('email')
+                <div class="error">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="form-group">
                 <label class="label" for="password">パスワード</label>
-                <input id="password" class="input" type="password" name="password" autocomplete="current-password">
-                @error('password') <div class="error">{{ $message }}</div> @enderror
+                <input id="password" class="input" type="password" name="password"
+                    autocomplete="current-password">
+                @error('password')
+                <div class="error">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="actions">

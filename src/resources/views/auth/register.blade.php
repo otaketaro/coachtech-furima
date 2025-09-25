@@ -12,10 +12,11 @@
             <p class="auth-sub"></p>
         </header>
 
-        {{-- サーバー側のバリデーションを見たいので novalidate はこのままでOK --}}
-        <form method="POST" action="{{ route('register') }}" novalidate>
+        {{-- サーバー側のバリデーション挙動を確認したいので HTML5 の自動検証は抑制 --}}
+        <form method="POST" action="{{ route('register') }}" novalidate aria-label="会員登録フォーム">
             @csrf
 
+            {{-- ユーザー名（20文字以内） --}}
             <div class="form-group">
                 <label class="label" for="name">ユーザー名</label>
                 <input
@@ -24,24 +25,34 @@
                     name="name"
                     type="text"
                     value="{{ old('name') }}"
-                    maxlength="20" {{-- ← 要件：20文字以内に合わせる --}}
-                    autocomplete="name">
-                @error('name') <div class="error">{{ $message }}</div> @enderror
+                    maxlength="20"
+                    autocomplete="name"
+                    required
+                    aria-required="true">
+                @error('name')
+                <div class="error" role="alert">{{ $message }}</div>
+                @enderror
             </div>
 
+            {{-- メールアドレス（255文字以内・形式検証） --}}
             <div class="form-group">
                 <label class="label" for="email">メールアドレス</label>
                 <input
                     id="email"
                     class="input input-lg"
                     name="email"
-                    type="email" {{-- ← email 型にして入力補助＆軽い検証 --}}
+                    type="email"
                     value="{{ old('email') }}"
                     maxlength="255"
-                    autocomplete="email">
-                @error('email') <div class="error">{{ $message }}</div> @enderror
+                    autocomplete="email"
+                    required
+                    aria-required="true">
+                @error('email')
+                <div class="error" role="alert">{{ $message }}</div>
+                @enderror
             </div>
 
+            {{-- パスワード（8文字以上） --}}
             <div class="form-group">
                 <label class="label" for="password">パスワード</label>
                 <input
@@ -49,10 +60,15 @@
                     class="input input-lg"
                     type="password"
                     name="password"
-                    autocomplete="new-password">
-                @error('password') <div class="error">{{ $message }}</div> @enderror
+                    autocomplete="new-password"
+                    required
+                    aria-required="true">
+                @error('password')
+                <div class="error" role="alert">{{ $message }}</div>
+                @enderror
             </div>
 
+            {{-- 確認用パスワード（password と一致） --}}
             <div class="form-group">
                 <label class="label" for="password_confirmation">確認用パスワード</label>
                 <input
@@ -60,11 +76,13 @@
                     class="input input-lg"
                     type="password"
                     name="password_confirmation"
-                    autocomplete="new-password">
-                {{-- 任意：確認用の個別メッセージを出すなら下の @error を有効化
-                @error('password_confirmation') <div class="error">{{ $message }}
-            </div> @enderror
-            --}}
+                    autocomplete="new-password"
+                    required
+                    aria-required="true">
+                {{-- バリデーション実装によっては password 側に attached される場合もあるため両方ケア --}}
+                @error('password_confirmation')
+                <div class="error" role="alert">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="actions">

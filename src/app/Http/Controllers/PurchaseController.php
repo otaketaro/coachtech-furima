@@ -73,7 +73,7 @@ class PurchaseController extends Controller
             'shipping_building' => old('shipping_building', $sess['shipping_building'] ?? ($user->building ?? '')),
         ];
 
-        return view('purchase.address', compact('item', 'form'));
+        return view('purchase.address.edit', compact('item', 'form'));
     }
 
     /**

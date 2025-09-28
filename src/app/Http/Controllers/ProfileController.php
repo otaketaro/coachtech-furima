@@ -13,7 +13,7 @@ class ProfileController extends Controller
     {
         $user = auth()->user();
 
-        return view('mypage.edit', compact('user'));
+        return view('mypage.profile.edit', compact('user'));
     }
 
     public function update(ProfileRequest $request): RedirectResponse

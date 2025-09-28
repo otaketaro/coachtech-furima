@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ItemController::class, 'index'])->name('items.index');
 
 // PG05: 商品詳細
-Route::get('/item/{item?}', [ItemController::class, 'show'])->name('items.show');
+Route::get('/item/{item}',   [ItemController::class, 'show'])->name('items.show');
 
 // ===== ログイン必須 =====
 Route::middleware('auth')->group(function () {

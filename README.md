@@ -73,7 +73,9 @@ php artisan db:seed
 docker-compose exec php bash
 
 テスト環境用にマイグレーション・シーディングを実行
+
 php artisan migrate --env=testing
+
 php artisan db:seed --env=testing
 
 テストを実行

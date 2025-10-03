@@ -88,8 +88,11 @@ cp .env.testing.example .env.testing
 
 
 php artisan config:clear
+
 php artisan migrate --env=testing
+
 php artisan db:seed --env=testing
+
 
 4) テスト実行
 

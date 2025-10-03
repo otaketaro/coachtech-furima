@@ -67,24 +67,33 @@ php artisan db:seed
 
 ## テストについて
 
-) テスト DB 作成（初回のみ・ホスト側）
+1) テスト DB 作成（初回のみ・ホスト側）
+
+
 docker compose exec mysql mysql -uroot -proot -e \
 "CREATE DATABASE IF NOT EXISTS laravel_db_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
  GRANT ALL PRIVILEGES ON laravel_db_test.* TO 'laravel_user'@'%';
  FLUSH PRIVILEGES;"
 
+
 2) .env.testing 用意（PHP コンテナ内）
+
+
 cp .env.testing.example .env.testing
 
 
 ※ .env.testing.example を同梱しています。APP_KEY の設定は phpunit.xml 側で注入済みのため、.env.testing 側はそのままで問題ありません。
 
 3) testing 環境でマイグレーション / シーディング
+
+
 php artisan config:clear
 php artisan migrate --env=testing
 php artisan db:seed --env=testing
 
 4) テスト実行
+
+
 php artisan test
 
 

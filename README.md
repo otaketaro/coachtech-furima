@@ -67,26 +67,52 @@ php artisan db:seed
 
 ## テストについて
 
-本アプリケーションは PHPUnit による自動テストを実装済みです。以下の手順でテストを実行できます。
+このプロジェクトの自動テストは MySQL のテスト用DB（laravel_db_test） を使用します（本番/開発DBとは分離）。
+phpunit.xml で DB を上書きしていないため、.env.testing がそのまま使われます。
 
-コンテナに入る
-docker-compose exec php bash
+1) テストDBの作成（ホスト側で実行）
 
-テスト環境用にマイグレーション・シーディングを実行
+docker compose exec mysql mysql -uroot -proot -e \
+"CREATE DATABASE IF NOT EXISTS laravel_db_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ GRANT ALL PRIVILEGES ON laravel_db_test.* TO 'laravel_user'@'%';
+ FLUSH PRIVILEGES;"
 
-php artisan migrate --env=testing
 
+2) .env.testing を用意（PHPコンテナ内）
+
+docker compose exec php bash
+cp .env .env.testing
+
+# 必要最小の設定（既に入っていれば編集不要）
+# APP_ENV=testing
+# DB_CONNECTION=mysql
+# DB_HOST=mysql
+# DB_DATABASE=laravel_db_test
+# DB_USERNAME=laravel_user
+# DB_PASSWORD=laravel_pass
+
+# テストを安定化（外部I/Oを避ける）
+# CACHE_DRIVER=array
+# SESSION_DRIVER=array
+# QUEUE_CONNECTION=sync
+# MAIL_MAILER=log
+# FILESYSTEM_DISK=local
+
+# APP_KEY が無ければ .env からコピーしてください
+# 反映
+php artisan config:clear
+
+
+3) テストDBを初期化
+
+php artisan migrate:fresh --env=testing
 php artisan db:seed --env=testing
 
-テストを実行
+
+4) テスト実行
+
 php artisan test
 
-主なテスト内容
-ユーザー登録／ログイン機能
-出品機能（商品登録・一覧・詳細表示）
-購入機能（住所入力・支払い方法選択・購入確定処理）
-バリデーション（必須項目未入力時のエラーメッセージ表示など）購入後の一覧での「SOLD」表示確認
-マイページ購入履歴の表示確認、全てのテストがグリーンになることを確認済みです。
 
 ## 補足
 商品詳細ページのエラーメッセージの指定がなかったため、「リスト内の項目を選択してください」というエラーメッセージが出るようにしてあります。

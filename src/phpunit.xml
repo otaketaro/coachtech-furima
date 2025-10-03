@@ -18,6 +18,7 @@
   </coverage>
 
   <php>
+    <env name="APP_KEY" value="base64:eDethw6Nn4K48OVs/hD9lDhS42FP+Ln9qzUn7hncZRI="/>
     <!-- Deprecated / User Deprecated を抑止（E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED 相当） -->
     <ini name="error_reporting" value="8191"/>
 

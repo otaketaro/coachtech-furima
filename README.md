@@ -67,50 +67,22 @@ php artisan db:seed
 
 ## テストについて
 
-このプロジェクトの自動テストは MySQL のテスト用DB（laravel_db_test） を使用します（本番/開発DBとは分離）。
-phpunit.xml で DB を上書きしていないため、.env.testing がそのまま使われます。
-
-1) テストDBの作成（ホスト側で実行）
-
+1) テストDB作成（初回のみ）
 docker compose exec mysql mysql -uroot -proot -e \
 "CREATE DATABASE IF NOT EXISTS laravel_db_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
  GRANT ALL PRIVILEGES ON laravel_db_test.* TO 'laravel_user'@'%';
  FLUSH PRIVILEGES;"
 
+2) 環境ファイル
+cp .env.testing.example .env.testing
+# APP_KEY は .env からコピーしてください（未設定だと失敗します）
 
-2) .env.testing を用意（PHPコンテナ内）
-
-docker compose exec php bash
-cp .env .env.testing
-
-# 必要最小の設定（既に入っていれば編集不要）
-# APP_ENV=testing
-# DB_CONNECTION=mysql
-# DB_HOST=mysql
-# DB_DATABASE=laravel_db_test
-# DB_USERNAME=laravel_user
-# DB_PASSWORD=laravel_pass
-
-# テストを安定化（外部I/Oを避ける）
-# CACHE_DRIVER=array
-# SESSION_DRIVER=array
-# QUEUE_CONNECTION=sync
-# MAIL_MAILER=log
-# FILESYSTEM_DISK=local
-
-# APP_KEY が無ければ .env からコピーしてください
-# 反映
+3) マイグレーション / シーディング（testing）
 php artisan config:clear
-
-
-3) テストDBを初期化
-
-php artisan migrate:fresh --env=testing
+php artisan migrate --env=testing
 php artisan db:seed --env=testing
 
-
 4) テスト実行
-
 php artisan test
 
 

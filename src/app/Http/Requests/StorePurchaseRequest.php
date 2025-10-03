@@ -9,15 +9,9 @@ class StorePurchaseRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        // ルート/コントローラ側で auth ミドルウェアを掛ける前提
         return true;
     }
 
-    /**
-     * 画面値 → 内部仕様へ非破壊で正規化
-     * convenience -> convenience_store
-     * credit      -> card
-     */
     protected function prepareForValidation(): void
     {
         $map = [
@@ -34,7 +28,7 @@ class StorePurchaseRequest extends FormRequest
     {
         return [
             'payment_method' => ['required', Rule::in(['convenience_store', 'card'])],
-            'shipping_postal_code' => ['required', 'max:16'], // 後で regex に強化OK
+            'shipping_postal_code' => ['required', 'max:16'], 
             'shipping_address' => ['required', 'max:255'],
             'shipping_building' => ['nullable', 'max:255'],
         ];

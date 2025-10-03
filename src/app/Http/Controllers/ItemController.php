@@ -10,9 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
 {
-    /**
-     * 商品一覧（トップ / マイリスト）
-     */
     public function index(Request $request)
     {
         $tab = $request->query('tab');

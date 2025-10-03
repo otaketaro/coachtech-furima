@@ -35,10 +35,10 @@ Route::middleware('auth')->group(function () {
     // PG08: 出品（画面表示）
     Route::get('/sell', [ItemController::class, 'create'])->name('items.create');
 
-    // ✅ 正規: 要件・テストに合わせて /items へ POST
+    // 正規: 要件・テストに合わせて /items へ POST
     Route::post('/items', [ItemController::class, 'store'])->name('items.store');
 
-    // 🧯 互換: 既存フォームが /sell に POST していても壊さない暫定受け口（任意）
+    // 互換: 既存フォームが /sell に POST していても壊さない暫定受け口（任意）
     Route::post('/sell', [ItemController::class, 'store'])->name('items.store_legacy');
 
     // PG06: 購入手続き

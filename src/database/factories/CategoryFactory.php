@@ -12,7 +12,7 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->unique()->words(2, true), // 例: "Home Goods"
+            'name' => $this->faker->unique()->words(2, true),
         ];
     }
 }

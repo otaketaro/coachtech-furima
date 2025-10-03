@@ -8,7 +8,6 @@ class ExhibitionRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        // ← ここが false だと必ず弾かれて / に戻ります
         return auth()->check();
     }
 
@@ -20,12 +19,7 @@ class ExhibitionRequest extends FormRequest
             'description' => ['required', 'string', 'max:255'],
             'price' => ['required', 'integer', 'min:1'],
             'condition' => ['required', 'string'],
-
-            // 画像：GDなし環境でも通るように "image" は使わず、mimes で判定
-            // テストで UploadedFile::fake()->image() でも create(..., 'image/jpeg') でも通ります
             'image' => ['required', 'file', 'mimes:jpeg,jpg,png'],
-
-            // カテゴリ必須・最低1つ
             'categories' => ['required', 'array', 'min:1'],
             'categories.*' => ['integer', 'exists:categories,id'],
         ];

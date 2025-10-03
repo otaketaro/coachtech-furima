@@ -18,8 +18,8 @@ class ItemFactory extends Factory
             'brand' => $this->faker->optional()->word(),
             'description' => $this->faker->sentence(),
             'price' => $this->faker->numberBetween(300, 50000),
-            'condition' => 'good', // enumの値に合わせる
-            'status' => Item::STATUS_SELLING, // 'selling'
+            'condition' => 'good',
+            'status' => Item::STATUS_SELLING,
             'image_path' => 'items/dummy.jpg',
         ];
     }

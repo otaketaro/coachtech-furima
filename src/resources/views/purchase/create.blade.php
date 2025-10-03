@@ -117,7 +117,7 @@
                     </div>
                 </div>
 
-                {{-- ✅ フォームの外でも確実に purchase-form を送信（logoutフォーム誤爆対策） --}}
+                {{-- フォームの外でも確実に purchase-form を送信（logoutフォーム誤爆対策） --}}
                 <button type="submit" form="purchase-form" class="btn-purchase">購入する</button>
             </aside>
         </div>
@@ -140,7 +140,6 @@
                 const v = sel.value;
                 out.textContent = labelMap[v] ?? '選択してください';
 
-                // 一度でも具体値を選んだら「選択してください」を options から削除
                 if (!removedPlaceholder && v) {
                     const ph = sel.querySelector('option[value=""]');
                     if (ph) ph.remove();

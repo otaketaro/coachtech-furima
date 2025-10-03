@@ -9,7 +9,7 @@
         <div class="pg-item-show__underline"></div>
 
         <div class="pg-item-show__grid product-detail">
-            {{-- 左：画像＋Soldバッジ --}}
+            {{-- 左：画像+Soldバッジ --}}
             <div class="item-visual product-image-area">
                 <div class="item-visual__box">
                     @php

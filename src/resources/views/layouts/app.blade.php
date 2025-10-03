@@ -78,11 +78,10 @@
                         var form = document.getElementById('site-search-form');
                         if (!input || !form) return;
 
-                        // “×”押下やエンター時（type=searchの標準イベント）
                         input.addEventListener('search', function() {
                             if (input.value === '') form.submit();
                         });
-                        // 手入力で消し切ったときも即反映したい場合
+
                         input.addEventListener('input', function() {
                             if (input.value === '') {
                                 requestAnimationFrame(function() {

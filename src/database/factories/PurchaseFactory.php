@@ -16,7 +16,7 @@ class PurchaseFactory extends Factory
         return [
             'item_id' => Item::factory(),
             'buyer_id' => User::factory(),
-            'price' => $this->faker->numberBetween(500, 50000), // 価格（unsigned int）
+            'price' => $this->faker->numberBetween(500, 50000),
             'payment_method' => $this->faker->randomElement(['convenience_store', 'card']),
             'status' => $this->faker->randomElement(['trading', 'completed']),
             'shipping_postal_code' => '123-4567',

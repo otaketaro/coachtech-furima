@@ -52,7 +52,6 @@ class User extends Authenticatable
     /** いいねした商品（likes 経由の多対多） */
     public function likedItems(): BelongsToMany
     {
-        // pivot: likes(user_id, item_id, timestamps)
         return $this->belongsToMany(Item::class, 'likes')->withTimestamps();
     }
 

@@ -38,22 +38,11 @@ return [
     'views' => true,
 
     // ===== 有効化する機能 =====
-    // - 基本要件：登録・パスワードリセットをON
-    // - 応用要件：メール認証はコメントアウトしておく（実装時に外す）
-    // - プロフィール／パスワード更新は後工程で使うためONのままでOK
     'features' => [
-        Features::registration(),        // 会員登録（必須）
-        Features::resetPasswords(),      // パスワード再設定（必須）
-        // Features::emailVerification(), // 応用：メール認証を実装するときにON
-
-        // 以降はプロフィール編集やパスワード変更のAPI（後半要件で活用）
+        Features::registration(),
+        Features::resetPasswords(),
         Features::updateProfileInformation(),
         Features::updatePasswords(),
 
-        // 2要素認証は要件外なのでOFF
-        // Features::twoFactorAuthentication([
-        //     'confirm' => true,
-        //     'confirmPassword' => true,
-        // ]),
     ],
 ];

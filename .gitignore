@@ -5,3 +5,4 @@ src/.env.*
 
 # PHPStan キャッシュ
 src/storage/framework/phpstan/
+.env.testing
